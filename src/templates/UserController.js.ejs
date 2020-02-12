@@ -1,0 +1,20 @@
+const UserService = require('../services/UserService');
+
+module.exports = {
+
+    async index(request, response) {
+        await UserService.index(request, response);
+    },
+
+    async store(request, response) {
+        await UserService.store(request, response);
+    },
+
+    async show(request, response) {
+        await UserService.show(request, response);
+    },
+
+    async destroy(request, response) {
+        await UserService.destroy(request, response);
+    },
+};

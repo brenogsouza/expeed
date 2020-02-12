@@ -1,0 +1,55 @@
+const <%= props.name %> = require('../models/<%= props.name %>');
+
+exports.index = async (request, response) => {
+    const <%= props.singularName %> = await <%= props.name %>.find();
+    return response.json(<%= props.pluralName %>);
+};
+
+exports.store = async (request, response) => {
+    const data = request.body;
+
+    const <%= props.singularName %> = await <%= props.name %>.create(data);
+
+    return response.json(<%= props.singularName %>);
+};
+
+exports.show = async (request, response) => {
+    const { _id } = request.params;
+
+    const <%= props.singularName %> = await <%= props.name %>.findById(_id);
+
+    if (<%= props.singularName %> == null)
+        return response.status(404).json();
+
+    return response.json(<%= props.singularName %>);
+};
+
+exports.update = async (request, response) => {
+    const data = request.body;
+    const { id } = request.params;
+
+    const <%= props.singularName %> = await <%= props.name %>.findById(id, (err) => {
+        if (err)
+            return response.status(404).json();
+    });
+
+    await <%= props.singularName %>.updateOne(data, (err) => {
+        if (err)
+            return response.json({ Error: err });
+    });
+
+    return response.json({ message: 'Usuario criado com sucesso' });
+};
+
+exports.destroy = async (request, response) => {
+    const { id } = request.params;
+
+    const <%= props.singularName %> = await <%= props.name %>.findById(id);
+
+    if (<%= props.singularName %> == null)
+        return response.status(404).json();
+
+        <%= props.singularName %>.remove();
+
+    response.status(200).json();
+};

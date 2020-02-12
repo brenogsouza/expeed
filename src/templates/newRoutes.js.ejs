@@ -1,0 +1,19 @@
+const { Router } = require('express');
+
+
+const UserController = require('../src/controllers/UserController');
+const <%= props.name %>Controller = require('../src/controllers/<%= props.name %>Controller');
+
+const routes = Router();
+
+routes.get('/users', UserController.index);
+routes.get('/users/:id', UserController.show);
+routes.get('/users', UserController.store);
+routes.get('/users/:id', UserController.update);
+routes.get('/users/:id', UserController.destroy);
+
+routes.get('/<%= props.name %>', <%= props.name %>Controller.index);
+routes.get('/<%= props.name %>/:id', <%= props.name %>Controller.show);
+routes.get('/<%= props.name %>', <%= props.name %>Controller.store);
+routes.get('/<%= props.name %>/:id', <%= props.name %>Controller.update);
+routes.get('/<%= props.name %>/:id', <%= props.name %>Controller.destroy); 

@@ -1,0 +1,20 @@
+const <%= props.name %>Service = require('../services/<%= props.name %>Service');
+
+module.exports = {
+
+    async index(request, response) {
+        await <%= props.name %>Service.index(request, response);
+    },
+
+    async store(request, response) {
+        await <%= props.name %>Service.store(request, response);
+    },
+
+    async show(request, response) {
+        await <%= props.name %>Service.show(request, response);
+    },
+
+    async destroy(request, response) {
+        await <%= props.name %>Service.destroy(request, response);
+    },
+};
