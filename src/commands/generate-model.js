@@ -22,7 +22,6 @@ module.exports = {
         let getSingularArray = [];
         let pluralName = [];
 
-
         nameArray.map(item => {
             getPluralArray.push(item.replace(nameArray[0], firstLetterLowerCased));
         });
@@ -43,13 +42,13 @@ module.exports = {
                 name: fileName,
                 pluralName: pluralName,
             }
-        })
+        });
 
         await template.generate({
             template: 'controller.js.ejs',
             target: `src/controllers/${fileName}Controller.js`,
             props: { name: fileName }
-        })
+        });
 
         await template.generate({
             template: 'service.js.ejs',
@@ -59,7 +58,7 @@ module.exports = {
                 pluralName: pluralName,
                 singularName: getSingularArray,
             }
-        })
+        });
 
         await template.generate({
             template: 'newRoutes.js.ejs',
@@ -69,8 +68,8 @@ module.exports = {
                 pluralName: pluralName,
                 singularName: getSingularArray,
             }
-        })
-
+        });
+ 
         success(`model, controller and service ${fileName} created successfully!`);
     }
 }

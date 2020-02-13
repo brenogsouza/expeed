@@ -1,25 +1,36 @@
-# expeed CLI
+## expeed CLI
 
-A CLI for expeed.
+Speeding the way how API's are built using express.js framework.
 
-## Customizing your CLI
+---
 
-Check out the documentation at https://github.com/infinitered/gluegun/tree/master/docs.
+### Description
 
-## Publishing to NPM
+This lib was made to simplified the creation of the first structure of a backend project using express.js.
 
-To package your CLI up for NPM, do this:
+---
 
-```shell
-$ npm login
-$ npm whoami
-$ npm lint
-$ npm test
-(if typescript, run `npm run build` here)
-$ npm publish
-```
+#### How to use:
 
-# License
+- **Install globally on your machine**
+ 
 
-MIT - see LICENSE
+ ~~~javascript
+  yarn global add expeed or npm -g install expeed
+~~~
+- **Use the commands to get started:**
+Create all the first folders you'll need
+
+~~~
+expeed generate <project name> or expeed g <project name>
+~~~
+
+- let the expeed create do all the job:
+creating the models, controllers and services
+
+~~~
+expeed model <model name> or expeed m <model name>
+~~~
+
+For this, the model, the controller and even de service will be created 
 
