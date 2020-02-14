@@ -1,3 +1,6 @@
+const GetPluralName = require('../utils/GetPluralName');
+const GetSingularName = require('../utils/GetSingularName');
+
 module.exports = {
     name: 'generate-model',
     description: 'Generate model, controller and service files to the project',
@@ -15,25 +18,8 @@ module.exports = {
         }
 
         const fileName = parameters.first;
-        const nameArray = [...fileName];
-        const firstLetterLowerCased = nameArray[0].replace(nameArray[0], nameArray[0].toLowerCase());
-
-        let getPluralArray = [];
-        let getSingularArray = [];
-        let pluralName = [];
-
-        nameArray.map(item => {
-            getPluralArray.push(item.replace(nameArray[0], firstLetterLowerCased));
-        });
-
-        nameArray.map(item => {
-            getSingularArray.push(item.replace(nameArray[0], firstLetterLowerCased));
-        });
-
-        pluralName.push(...getSingularArray, 's');
-
-        pluralName = pluralName.join('');
-        getSingularArray = getSingularArray.join('');
+        const singularName = GetSingularName();
+        const pluralName = GetPluralName();
 
         await template.generate({
             template: 'model.js.ejs',
@@ -56,7 +42,7 @@ module.exports = {
             props: {
                 name: fileName,
                 pluralName: pluralName,
-                singularName: getSingularArray,
+                singularName: singularName,
             }
         });
 
@@ -66,10 +52,10 @@ module.exports = {
             props: {
                 name: fileName,
                 pluralName: pluralName,
-                singularName: getSingularArray,
+                singularName: singularName,
             }
         });
- 
+
         success(`model, controller and service ${fileName} created successfully!`);
     }
 }
