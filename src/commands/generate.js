@@ -22,44 +22,54 @@ module.exports = {
     await template.generate({
       template: 'UserController.js.ejs',
       target: `src/controllers/UserController.js`,
-    })
+    });
 
     await template.generate({
       template: 'UserModel.js.ejs',
       target: `src/models/User.js`,
-    })
+    });
 
     await template.generate({
       template: 'UserService.js.ejs',
       target: `src/services/UserService.js`,
-    })
+    });
 
     await template.generate({
       template: 'routes.js.ejs',
       target: `src/routes.js`,
-    })
+    });
 
     await template.generate({
       template: 'server.js.ejs',
       target: `src/server.js`,
-    })
+    });
 
     await template.generate({
       template: '.env.js.ejs',
       target: `.env`,
-    })
+    });
 
 
     await template.generate({
       template: 'package.json.js.ejs',
       target: `package.json`,
       props: { name: parameters.first }
-    })
+    });
 
     await template.generate({
       template: 'procfile.js.ejs',
       target: `Procfile`,
-    })
+    });
+
+    await template.generate({
+      template: 'docker-compose.yml.ejs',
+      target: `docker-compose.yml`,
+    });
+
+    await template.generate({
+      template: 'teste/readme.md.ejs',
+      target: `README.md`,
+    });
 
     success('Folders generated succesfully');
   }
