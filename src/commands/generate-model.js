@@ -54,6 +54,14 @@ module.exports = {
             }
         }); 
 
+        await template.generate({
+            template: 'Routes.js.ejs',
+            target: `src/routes.js`,
+            props: {
+                name: fileName, 
+            }
+        }); 
+
         success(`model, controller and service ${fileName} created successfully!`);
     }
 }

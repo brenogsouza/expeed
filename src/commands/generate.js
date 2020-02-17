@@ -17,6 +17,8 @@ module.exports = {
       return;
     }
 
+    const filename = parameters.first;
+
     fs.mkdirSync('src');
 
     await template.generate({
@@ -25,7 +27,7 @@ module.exports = {
     });
 
     await template.generate({
-      template: 'routes.js.ejs',
+      template: 'UserRoute.js.ejs',
       target: `src/controllers/Routes/UserRoute.js`,
     });
 
@@ -40,7 +42,7 @@ module.exports = {
     });
 
     await template.generate({
-      template: 'routes.js.ejs',
+      template: 'BaseRoutes.js.ejs',
       target: `src/routes.js`,
     });
 
@@ -58,7 +60,7 @@ module.exports = {
     await template.generate({
       template: 'package.json.js.ejs',
       target: `package.json`,
-      props: { name: parameters.first }
+      props: { name: filename }
     });
 
     await template.generate({
@@ -74,7 +76,10 @@ module.exports = {
     await template.generate({
       template: 'readme.md.ejs',
       target: `README.md`,
-    }); 
+      props: {
+        name: filename
+      }
+    });
 
     success('Folders generated succesfully');
   }
