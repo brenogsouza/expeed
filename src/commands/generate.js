@@ -25,6 +25,11 @@ module.exports = {
     });
 
     await template.generate({
+      template: 'routes.js.ejs',
+      target: `src/controllers/Routes/UserRoute.js`,
+    });
+
+    await template.generate({
       template: 'UserModel.js.ejs',
       target: `src/models/User.js`,
     });
@@ -67,9 +72,9 @@ module.exports = {
     });
 
     await template.generate({
-      template: 'teste/readme.md.ejs',
+      template: 'readme.md.ejs',
       target: `README.md`,
-    });
+    }); 
 
     success('Folders generated succesfully');
   }

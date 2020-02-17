@@ -1,55 +1,24 @@
 const User = require('../models/User');
 
-exports.index = async (request, response) => {
-    const users = await User.find();
-    return response.json(users);
+exports.index = async () => {
+    return await User.find();
 };
 
-exports.store = async (request, response) => {
-    const data = request.body;
-
+exports.store = async (data) => {
     const user = await User.create(data);
-
-    return response.json(user);
+    return user;
 };
 
-exports.show = async (request, response) => {
-    const { _id } = request.params;
+exports.show = async (user_id) => {
+    const user = await User.findById(user_id);
+    return user;
+};
 
-    const user = await User.findById(_id);
+exports.destroy = async (user_id) => {
+    const user = await User.findById(user_id);
 
     if (user == null)
-        return response.status(404).json();
-
-    return response.json(user);
-};
-
-exports.update = async (request, response) => {
-    const data = request.body;
-    const { id } = request.params;
-
-    const user = await User.findById(id, (err) => {
-        if (err)
-            return response.status(404).json();
-    });
-
-    await user.updateOne(data, (err) => {
-        if (err)
-            return response.json({ Error: err });
-    });
-
-    return response.json({ message: 'Usuario criado com sucesso' });
-};
-
-exports.destroy = async (request, response) => {
-    const { id } = request.params;
-
-    const user = await User.findById(id);
-
-    if (user == null)
-        return response.status(404).json();
+        return null
 
     user.remove();
-
-    response.status(200).json();
 };

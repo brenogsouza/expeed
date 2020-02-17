@@ -48,13 +48,11 @@ module.exports = {
 
         await template.generate({
             template: 'newRoutes.js.ejs',
-            target: `src/routes.js`,
+            target: `src/controllers/Routes/${fileName}Route.js`,
             props: {
-                name: fileName,
-                pluralName: pluralName,
-                singularName: singularName,
+                name: fileName, 
             }
-        });
+        }); 
 
         success(`model, controller and service ${fileName} created successfully!`);
     }
