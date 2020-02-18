@@ -9,9 +9,9 @@ function GetPluralName(fileName) {
         getPluralArray.push(item.replace(nameArray[0], firstLetterLowerCased));
     });
 
-    pluralName.push(...getSingularArray, 's');
+    pluralName.push(...getPluralArray, 's');
 
-    pluralName = pluralName.join('');
+   return  pluralName.join('');
 }
 
 module.exports = GetPluralName;

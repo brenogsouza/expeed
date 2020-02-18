@@ -1,5 +1,6 @@
 const GetPluralName = require('../utils/GetPluralName');
 const GetSingularName = require('../utils/GetSingularName');
+const FirstLetterToUpperCase = require('../utils/ToUpperCase');
 
 module.exports = {
     name: 'generate-model',
@@ -12,14 +13,15 @@ module.exports = {
             print: { success, error }
         } = toolbox
 
-        if (!parameters.first) {
+        const fileName = FirstLetterToUpperCase(parameters.first);
+
+        if (!fileName) {
             error('Model name must be specified');
             return;
         }
-
-        const fileName = parameters.first;
-        const singularName = GetSingularName();
-        const pluralName = GetPluralName();
+ 
+        const singularName = GetSingularName(fileName);
+        const pluralName = GetPluralName(fileName);
 
         await template.generate({
             template: 'model.js.ejs',
@@ -33,12 +35,6 @@ module.exports = {
         await template.generate({
             template: 'controller.js.ejs',
             target: `src/controllers/${fileName}Controller.js`,
-            props: { name: fileName }
-        });
-
-        await template.generate({
-            template: 'service.js.ejs',
-            target: `src/services/${fileName}Service.js`,
             props: {
                 name: fileName,
                 pluralName: pluralName,
@@ -47,20 +43,29 @@ module.exports = {
         });
 
         await template.generate({
+            template: 'service.js.ejs',
+            target: `src/services/${fileName}Service.js`,
+            props: {
+                name: fileName,
+                singularName: singularName,
+            }
+        });
+
+        await template.generate({
             template: 'newRoutes.js.ejs',
             target: `src/controllers/Routes/${fileName}Route.js`,
             props: {
-                name: fileName, 
+                name: fileName,
             }
-        }); 
+        });
 
         await template.generate({
             template: 'Routes.js.ejs',
             target: `src/routes.js`,
             props: {
-                name: fileName, 
+                name: fileName,
             }
-        }); 
+        });
 
         success(`model, controller and service ${fileName} created successfully!`);
     }
