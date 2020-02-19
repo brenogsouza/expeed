@@ -1,6 +1,6 @@
 {
   "name": "expeed",
-  "version": "0.0.78",
+  "version": "0.0.79",
   "description": "expeed CLI",
   "bin": {
     "expeed": "bin/expeed"
