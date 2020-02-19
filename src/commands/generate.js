@@ -1,4 +1,5 @@
 const fs = require('fs');
+const command = require('child_process');
 const loading = require('loading-cli');
 
 module.exports = {
@@ -104,6 +105,12 @@ module.exports = {
     setTimeout(function () {
       load.stop()
       load.succeed('Folders generated succesfully')
+      command.exec('yarn install', (err, stdout, stdin) => {
+        if (err)
+          console.log('Error to execute command', err);
+
+        console.log(stdout);
+      }) 
     }, 1000)
   }
 }
