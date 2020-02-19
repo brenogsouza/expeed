@@ -70,6 +70,11 @@ module.exports = {
     });
 
     await template.generate({
+      template: '.gitignore.js.ejs',
+      target: `.gitignore`,
+    });
+
+    await template.generate({
       template: 'docker-compose.yml.ejs',
       target: `docker-compose.yml`,
     });
