@@ -1,4 +1,5 @@
 const fs = require('fs');
+const loading = require('loading-cli');
 
 module.exports = {
   name: 'generate',
@@ -81,6 +82,23 @@ module.exports = {
       }
     });
 
-    success('Folders generated succesfully');
+    const loadingtext = 'Generating all folders and files...';
+
+    const load = loading({
+      text: loadingtext,
+      color: 'blue',
+      frames: ["⊶", "⊷"],
+    }).start();
+
+    setTimeout(function () {
+      load.color = 'green';
+      load.text = 'Almost there...';
+      load.frame(["⊶", "⊷"]);
+    }, 600)
+
+    setTimeout(function () {
+      load.stop()
+      load.succeed('Folders generated succesfully')
+    }, 1000)
   }
 }

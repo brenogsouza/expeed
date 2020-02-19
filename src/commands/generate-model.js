@@ -1,3 +1,4 @@
+const loading = require('loading-cli');
 const GetPluralName = require('../utils/GetPluralName');
 const GetSingularName = require('../utils/GetSingularName');
 const FirstLetterToUpperCase = require('../utils/ToUpperCase');
@@ -19,7 +20,7 @@ module.exports = {
             error('Model name must be specified');
             return;
         }
- 
+
         const singularName = GetSingularName(fileName);
         const pluralName = GetPluralName(fileName);
 
@@ -67,6 +68,23 @@ module.exports = {
             }
         });
 
-        success(`model, controller and service ${fileName} created successfully!`);
+        const loadingtext = 'Generating all folders and files...';
+
+        const load = loading({
+            text: loadingtext,
+            color: 'blue',
+            frames: ["⊶", "⊷"],
+        }).start();
+
+        setTimeout(function () {
+            load.color = 'green';
+            load.text = 'Almost there...';
+            load.frame(["⊶", "⊷"]);
+        }, 600)
+
+        setTimeout(function () {
+            load.stop()
+            load.succeed(`Model, Controller and Service ${fileName} created successfully!`);
+        }, 1000)
     }
 }
