@@ -1,3 +1,13 @@
+# Expeed
+
+Library built to simplify API's start ups, using gluegun cli framework.
+
+# What I Learned
+
+* How to use gluegun cli framework to CLI's creation;
+* How to manipulate files using *file system*;
+
+ 
 ## expeed CLI
 
 Speeding the way how API's are built using express.js framework.
