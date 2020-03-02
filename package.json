@@ -1,6 +1,10 @@
 {
   "name": "expeed",
+<<<<<<< HEAD
   "version": "0.0.24",
+=======
+  "version": "0.0.81",
+>>>>>>> 129f984cf0830717639f17a4e553e6488c05dc40
   "description": "expeed CLI",
   "bin": {
     "expeed": "bin/expeed"
@@ -22,7 +26,8 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "gluegun": "latest"
+    "gluegun": "latest",
+    "loading-cli": "^1.1.0"
   },
   "devDependencies": {
     "jest": "^24.1.0",
