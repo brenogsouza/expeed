@@ -1,3 +1,6 @@
+![](src/assets/expeed-logo.png)
+
+
 ## expeed CLI
 
 Speeding the way how API's are built using express.js framework.
