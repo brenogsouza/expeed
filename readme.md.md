@@ -1,4 +1,4 @@
-  ![](src/assets/expeed-logo.png)
+  ![](src/assets/expeed-logo-github.png)
 
 
 ## expeed CLI
