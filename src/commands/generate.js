@@ -109,8 +109,10 @@ module.exports = {
         if (err)
           console.log('Error to execute command', err);
 
+
+        load.start();
         console.log(stdout);
-      }) 
+      })
     }, 1000)
   }
 }
