@@ -28,8 +28,7 @@ module.exports = {
             template: 'model.js.ejs',
             target: `src/models/${fileName}.js`,
             props: {
-                name: fileName,
-                pluralName: pluralName,
+                name: fileName, 
             }
         });
 

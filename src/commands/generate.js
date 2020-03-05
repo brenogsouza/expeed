@@ -108,9 +108,13 @@ module.exports = {
       command.exec('yarn install', (err, stdout, stdin) => {
         if (err)
           console.log('Error to execute command', err);
-
-        console.log(stdout);
-      }) 
+      })
+      loading({
+        text: 'Installing all the dependencies',
+        color: 'blue',
+        frames: ["⊶", "⊷"],
+      }).start();
     }, 1000)
+    load.stop();
   }
 }
