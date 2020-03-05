@@ -9,7 +9,7 @@ function GetPluralName(fileName) {
         getPluralArray.push(item.replace(nameArray[0], firstLetterLowerCased));
     });
 
-    if (getPluralArray[-1] === 's')
+    if (getPluralArray[getPluralArray.length - 1] === 's')
         return pluralName.join('');
 
     pluralName.push(...getPluralArray, 's');
