@@ -105,16 +105,21 @@ module.exports = {
     setTimeout(function () {
       load.stop()
       load.succeed('Folders generated succesfully')
-      command.exec('yarn install', (err, stdout, stdin) => {
-        if (err)
-          console.log('Error to execute command', err);
-      })
       loading({
         text: 'Installing all the dependencies',
         color: 'blue',
         frames: ["⊶", "⊷"],
       }).start();
+
+      command.exec('yarn install', (err, stdout, stdin) => {
+        if (err)
+          console.log('Error to execute command', err);
+
+        load.stop()
+        load.succeed('Dependencies installed succesfully!');
+
+      })
     }, 1000)
-    load.stop();
+    load.stop()
   }
 }
