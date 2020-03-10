@@ -1,4 +1,6 @@
-  ![](src/assets/expeed-logo-github.png)
+  <p align="center">
+  <img src="./src/assets/expeed-logo-github.png">
+</p>
 
 
 ## expeed CLI
