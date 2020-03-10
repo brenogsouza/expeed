@@ -1,7 +1,7 @@
 export const foldersOptions = (filename) => {
     return {
         properties: {
-            filename: filename,
+            name: filename,
         },
         templates: [
             {
@@ -43,7 +43,7 @@ export const foldersOptions = (filename) => {
                 template: 'package.json.js.ejs',
                 target: `package.json`,
                 props: {
-                    name: filename
+                    name: name
                 }
             },
 
@@ -66,7 +66,7 @@ export const foldersOptions = (filename) => {
                 template: 'readme.md.ejs',
                 target: `README.md`,
                 props: {
-                    name: filename
+                    name: name
                 }
             }
 

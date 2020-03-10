@@ -1,6 +1,9 @@
-await template.generate({
-    template: item.template,
-    target: item.target,
-    props: {
-        name: item.properties.filename
-    }
+const TemplateProps = async (template, target, props) => {
+    await template.generate({
+        template: template,
+        target: target,
+        props: props,
+    })
+};
+
+module.exports = TemplateProps;

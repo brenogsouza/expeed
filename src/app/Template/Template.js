@@ -1,5 +1,8 @@
-const Template = async () => {
+const Template = async (template, target) => {
     await template.generate({
-        template: item.template,
-        target: item.target,
-    }
+        template: template,
+        target: target,
+    })
+};
+
+module.exports = Template;

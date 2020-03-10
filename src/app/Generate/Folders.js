@@ -1,17 +1,11 @@
+const Template = require('../Template/Template');
+const TemplateProps = require('../Template/TemplateProps');
+
 const generateFolders = (options) => {
-    options.map(item => {
+    options.templates.map(item => {
         item.props != null ?
-            await template.generate({
-                template: item.template,
-                target: item.target,
-                props: {
-                    name: item.properties.filename
-                }
-            }) :
-            await template.generate({
-                template: item.template,
-                target: item.target,
-            });
+            Template(item.template, item.target) :
+            TemplateProps(item.template, item.target, options.properties);
     });
 };
 
